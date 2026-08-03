@@ -1,0 +1,317 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Basic Definitions and Macros 
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Authors: Bjorn Lelmann, Elaine Pimentel
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%General purposes macros
+
+\newcommand\eg{\hbox{\textit{e.g.}}}
+\newcommand\ie{\hbox{\textit{i.e.}}}
+%\newcommand{\etal}{\emph{et al.}}
+
+%colors
+\newcommand{\red}[1]{\textcolor{red}{#1} }
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+\newcommand{\violet}[1]{\textcolor{violet}{#1}}
+
+%Cal
+\def\Ascr{{\cal A}}
+\def\Bscr{{\cal B}}
+\def\Cscr{{\cal C}}
+\def\Dscr{{\cal D}}
+\def\Escr{{\cal E}}
+\def\Fscr{{\cal F}}
+\def\Gscr{{\cal G}}
+\def\Hscr{{\cal H}}
+\def\Iscr{{\cal I}}
+\def\Jscr{{\cal J}}
+\def\Kscr{{\cal K}}
+\def\Lscr{{\mathcal L}}
+\def\Mscr{{\cal M}}
+\def\Nscr{{\cal N}}
+\def\Oscr{{\cal O}}
+\def\Pscr{{\cal P}}
+\def\Qscr{{\cal Q}}
+\def\Rscr{{\cal R}}
+\def\Sscr{{\cal S}}
+\def\Tscr{{\cal T}}
+\def\Uscr{{\cal U}}
+\def\Vscr{{\cal V}}
+\def\Wscr{{\cal W}}
+\def\Xscr{{\cal X}}
+\def\Yscr{{\cal Y}}
+\def\Zscr{{\cal Z}}
+
+%% Nestings
+
+\renewcommand*{\emptyset}{\varnothing}
+\newcommand*{\lab}{\mathsf{lab}}
+\newcommand*{\n}{\mathsf{n}}
+\newcommand*{\kax}[1][]		{\mathsf{k_{#1}}}
+\newcommand*{\BOT}{\neg}
+\newcommand*{\AND}{\mathbin{\wedge}}
+\newcommand*{\TOP}{\mathord{\top}}
+\newcommand*{\OR}{\mathbin{\vee}}
+\newcommand*{\IMP}{\mathbin{\rightarrow}}
+\newcommand*{\BOX}{\mathord{\Box}}
+\newcommand*{\DIA}{\mathord{\Diamond}}
+\newcommand*\mdelim[3]{%
+	\mathopen{}\left#1%
+	#3%
+	\right#2\mathclose{}%
+}
+%
+\makeatletter
+\newcommand*{\cxs}{%
+	\@ifnextchar\i{\cxs@two}{%
+		\@ifnextchar\bgroup{\cxs@one}{% % \bgroup is the same as {
+}}}
+\newcommand*{\cxs@one}[1]{%
+	\def\cxs@{#1}%
+	\mdelim{\lbrace}{\rbrace}{\ifx\cxs@\empty\mkern 3mu\else #1\fi}%
+	\cxs@one@decor%
+}
+\newcommand*{\cxs@two}[3]{%
+	\def\cxs@{#3}%
+	\mdelim{\lbrace\strut^{#2}}{\rbrace}{\ifx\cxs@\empty\mkern 3mu\else #3\fi}%
+	\cxs@one@decor%
+}
+\def\cxs@one@decor{%
+%	\@ifnextchar_{\cxs@one@sub}{%
+%		\@ifnextchar^{\cxs@one@sup}{%
+			\@ifnextchar\dots{\@firstoftwo{\dotsm\cxs@one@decor}}{%
+%				\@ifnextchar[{\cxs@one@arg}%]
+				\cxs}%}}%
+}
+%\def\cxs@one@sub_#1{_{#1}\cxs@one@decor}
+%\def\cxs@one@sup^#1{^{#1}\cxs@one@decor}
+%\def\cxs@one@arg[#1]{{#1}\cxs@one@decor}
+
+\def\cx@delete@right#1*{{#1}^{\star}\cx@continuation}
+\def\cx@delete@always#1{{#1}^{\ast}\cx@continuation}
+
+\def\cx@delete@star#1*{%
+	\@ifnextchar*{\cx@delete@right{#1}}{\cx@delete@always{#1}}%
+}
+
+\newcommand*{\@makecontextual}[2]{
+	\newcommand*{#1}{%
+		\@ifnextchar*{\cx@delete@star{#2}}{%
+%			\@ifnextchar\f{\cx@delete@focus{#2}}{%
+				#2\cx@continuation}}%
+	}
+%}
+\newcommand*{\cx@continuation}[1][]{_{#1}\cxs}
+
+\@makecontextual{\Ex}{}
+
+\@makecontextual{\Cx}{\Pi}
+\@makecontextual{\Dx}{\Delta}
+\@makecontextual{\Lx}{\Lambda}
+\@makecontextual{\Px}{\Pi}
+\@makecontextual{\Lxpr}{\Lambda'}
+\@makecontextual{\Rx}{\Gamma}
+\@makecontextual{\RxP}{\Gamma^{P}}
+\@makecontextual{\Rxs}{\Gamma^*}
+\@makecontextual{\Rxpr}{\Gamma'}
+\@makecontextual{\Dxb}{\Delta^{\rt{\bot}}}
+\@makecontextual{\Dxs}{\Delta^*}
+\@makecontextual{\Rxb}{\Gamma^{\rt{\bot}}}
+\@makecontextual{\Lxb}{\Lambda^{\rt{\bot}}}
+\@makecontextual{\Dxn}{\lf\Delta}
+\@makecontextual{\Dxt}{\rt\Delta}
+\@makecontextual{\Dxp}{\ct\Delta}
+\@makecontextual{\Rxp}{\Pi^{+}}
+\@makecontextual{\Rxm}{\Pi^{-}}
+\@makecontextual{\Dxm}{\Delta^{-}}
+\@makecontextual{\Ox}{\Omega}
+%\@makecontextual{\RRx}{\Xi}
+%\@makecontextual{\CCx}{\Sigma}
+%\@makecontextual{\DDx}{\Theta}
+
+%\newcommand*\BR[2][]{\mdelim{\lbrack\strut^{#1}}{\rbrack}{#2}}
+\newcommand*{\BR}{%
+	\@ifnextchar\i{\br@two}{%
+		\@ifnextchar\bgroup{\br@one}{% 
+}}}
+\newcommand*{\br@one}[1]{%
+	\def\br@{#1}%
+	\mdelim{\lbrack}{\rbrack}{\ifx\br@\empty\mkern 3mu\else #1\fi}%
+}
+\newcommand*{\br@two}[3]{%
+	\def\br@{#3}%
+	\mdelim{\lbrack\strut^{#2}}{\rbrack}{\ifx\br@\empty\mkern 3mu\else #3\fi}%
+}
+
+\newcommand*{\@makeoperator}[2]{
+	\newcommand*{#1}{%
+		\mathrm{#2}\mdelim{(}{)}
+	}
+}
+%
+\@makeoperator{\fm}{et}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% Intuitionistic polarities
+\newcommand*{\rt}[1]{#1^\circ}
+\newcommand*{\ct}[1]{#1^{\triangledown}}
+\newcommand*{\lf}[1]{#1^\bullet}
+
+
+%stuff
+%\newcommand{\2}{\mathsf{2}}
+%\newcommand{\3}{\mathsf{3}}
+%\newcommand{\4}{\mathsf{4}}
+%\newcommand{\5}{\mathsf{5}}
+\newcommand{\Ax}{\mathcal{A}}
+\newcommand{\B}{\mathsf{B}}
+\newcommand{\be}{\mathsf{b}}
+\newcommand{\C}{\mathsf{C}}
+\newcommand{\CK}{\mathsf{CK}}
+\newcommand{\ccut}{\ct{\mathsf{cut}}}
+\newcommand{\cexists}{\exists_{c}}
+\newcommand{\cimp}{\rightarrow_c}
+\newcommand{\cless}{\preccurlyeq}
+\newcommand{\clozenge}{\lozenge_c}
+\newcommand{\cs}{]\!]}
+\newcommand{\cvee}{\vee_c}
+\newcommand{\cwedge}{\wedge_c}
+\newcommand{\cut}{\mathsf{cut}}
+\newcommand{\D}{\mathsf{D}}
+\newcommand{\de}{\mathsf{d}}
+\newcommand{\defs}{:=}
+\newcommand{\dpt}[1]{\operatorname{\mathsf{dp}}\left( #1 \right)}
+%\newcommand{\e}{\mathsf{e}}
+\newcommand{\E}{\mathsf{E}}
+\newcommand{\EK}{\mathsf{EK}}
+\newcommand{\ESf}{\mathsf{ES4}}
+\newcommand{\eec}{{\em eec}}
+\newcommand{\es}{\emptyset}
+\newcommand{\ew}{\mathsf{ew}}
+\newcommand{\fa}{\forall}
+\newcommand{\ex}{\exists}
+\newcommand\FIL{\mathsf{FIL}}
+\newcommand\FLEci{\mathsf{FLEci}}
+\newcommand{\FLNS}{\mathsf{FLNS}}
+\newcommand{\forces}{\Vdash}
+\newcommand{\G}{\mathsf{G}}
+\newcommand{\gcinit}{\mathsf{init_c}}
+\newcommand{\ginit}{\mathsf{init_i}}
+\newcommand\Gtcp{\mathsf{G3cp}}
+\newcommand\Gtip{\mathsf{G3ip}}
+\newcommand\GtI{\mathsf{G3I}}
+\newcommand{\hearts}{\heartsuit}
+\newcommand{\ibox}[1]{{\Box_{#1}}}
+\newcommand{\icut}{\rt{\mathsf{cut}}}
+\newcommand{\id}{\mathsf{id}}
+\newcommand{\iequiv}{\leftrightarrow_i}
+\newcommand{\iexists}{\exists_{i}}
+\newcommand{\iimp}{\rightarrow_i}
+\newcommand{\ilozenge}{\lozenge_i}
+\newcommand{\init}{\mathsf{init}}
+\newcommand{\ivee}{\vee_i}
+\newcommand{\iwedge}{\wedge_i}
+\newcommand{\IK}{\mathsf{IK}}
+\newcommand{\ka}{\mathsf{k}}
+\newcommand{\K}{\mathsf{K}}
+\newcommand{\labEK}{\mathsf{labEK}}
+\newcommand{\labESf}{\mathsf{labES4}}
+\newcommand{\lift}{\mathtt{lift}}
+\newcommand{\logick}{\textsf{K}}
+\newcommand{\logicik}{\textsf{IK}}
+\newcommand{\Lor}{\bigvee}
+\newcommand\lra{\longrightarrow}
+\newcommand{\LC}{\mathsf{LC}}
+\newcommand{\LCE}{\mathsf{LCE}}
+\newcommand{\LCEm}{\mathsf{LCEm}}
+\newcommand\LJ{\textsf{LJ}}
+\newcommand\LE{\mathsf{LE}}
+\newcommand\LEc{\mathsf{LEc}}
+\newcommand\LEci{\mathsf{LEci}}
+\newcommand\LJp{\mathsf{LJp}}
+\newcommand{\LJT}{\mathsf{LJT}}
+\newcommand{\LJQ}{\mathsf{LJQ}}
+\newcommand\LK{\textsf{LK}}
+\newcommand\LKJ{\textsf{LKJ}}
+\newcommand{\LL}{\mathsf{LL}}
+\newcommand{\LLF}{\mathsf{LLF}}
+\newcommand{\LLS}{\mathsf{LLS}}
+\newcommand{\LLNS}{\mathsf{LLNS}}
+\newcommand\LmLJ{\mathsf{LL}_{\mathsf{mLJ}}}
+\newcommand{\LNS}{\mathsf{LNS}}
+\newcommand{\LS}{\mathsf{LS}}
+\newcommand{\LTS}{\mathsf{LTS}}
+\newcommand\LU{\textsf{LU}}
+\newcommand{\m}{\mathcal{M}}
+\newcommand{\M}{\mathsf{M}}
+\newcommand{\mcut}{\mathsf{mcut}}
+\newcommand\mLJ{\textsf{mLJ}}
+\newcommand\mLEci{\mathsf{mLEci}}
+\newcommand{\modelse}{\models_{\E}}
+\newcommand{\nes}[1]{\left[#1\right]}
+\newcommand{\nesh}[1]{\mathcal{S}\left\{#1\right\}}
+\newcommand{\nesi}[1]{\left\langle#1\right\rangle}
+\newcommand\NE{\mathsf{NE}}
+\newcommand{\nEK}{\mathsf{nEK}}
+\newcommand{\nEKc}{\mathsf{nEK}_c}
+\newcommand{\nEKi}{\mathsf{nEK}_i}
+\newcommand\NIK{\mathsf{NIK}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand\NJ{\textsf{NJ}}
+\newcommand\NK{\textsf{NK}}
+\newcommand{\NS}{\mathsf{NS}}
+\newcommand{\os}{[\![}
+\newcommand{\denot}[1]{\os #1 \cs}
+\newcommand{\Ob}{\mathcal{O}}
+\newcommand{\PP}{\mathsf{P}}
+\newcommand{\Pow}[1]{\mathfrak{P}\left(#1\right)}
+\newcommand{\Prem}{\mathcal{P}}
+\newcommand{\Prop}{\mathcal{P}}
+\newcommand{\pspace}{\mathsf{PSPACE}}
+\newcommand\ra\rightarrow
+\newcommand{\ran}{\rangle}
+\newcommand{\rarr}{\rightarrow}
+\newcommand{\rel}{R}
+\newcommand{\relfo}{R}
+\newcommand{\res}{\upharpoonright}
+\newcommand\Ra{\Rightarrow}
+%\newcommand{\seq}{\vdash}
+\newcommand{\seq}{\Rightarrow}
+\newcommand{\Seq}[3]{#1\Rightarrow #3;#2}
+\newcommand{\Sf}{\mathsf{S4}}
+\newcommand{\Sfi}{\mathsf{S5}}
+\newcommand{\sse}{\subseteq}
+\newcommand{\store}{\mathsf{store}}
+\newcommand{\Store}{\mathsf{sto}}
+\newcommand{\tradm}[2]{[#1]_{#2}}
+\newcommand{\tradme}[2]{\left[#1\right]_{#2}^e}
+\newcommand{\tradmk}[1]{\os#1\cs_\K}
+\newcommand{\tradms}[1]{\os#1\cs}
+\newcommand{\T}{\mathsf{T}}
+\newcommand{\te}{\mathsf{t}}
+\newcommand{\tup}[1]{\langle#1\rangle}
+\newcommand{\TB}{\mathsf{TB}}
+\newcommand{\val}{V}
+\newcommand{\Vee}{\bigvee}
+\newcommand{\wld}{W}
+\newcommand{\W}{\mathsf{W}}
+\newcommand{\Wdg}{\bigwedge}
+\newcommand\world[2]{#1:#2}
+
+% Games
+\newcommand{\Op}{\mathbf{O}}
+\newcommand{\Ppi}{\mathbf{P}^i}
+\newcommand{\Ppc}{\mathbf{P}^c}
