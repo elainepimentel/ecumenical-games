@@ -112,8 +112,8 @@ Our proposal is to develop a game semantics with respect to the pure ecumenical 
 {\bf TODO:}
 \begin{itemize}
 \item Define positive and negative formulas. In particular, should we have negation? Add the discussion about 2 negations and how it does not affect {\em provability}, but it does matter for the definition of semantics and game steps.
-\item Change Luiz's definition of Kripke semantics, so that classical connectives are defined via the ``classical negation''?
-\item Question: should we have int. and classical atoms?
+\item Change Luiz's definition of Kripke semantics, so that classical connectives are defined via the ``classical negation''? This way a classical version of the game would coincide with provability in classical logics, with Kripke structures containing only one world (as it should be!)
+\item Question: should we have int. and classical atoms? In my opinion we should not! Hence, if you want to win the game $\neg\neg p\to p$ with an intuitionistic negation, then the implication {\em must be}  classical and the cost is 100. Otherwise one could have an intuitionistic implication and the cost would be 0001...
 \item I've commented weakening, since it can be simulated using dereliction and negation. Is this okay?
 \end{itemize}
 
