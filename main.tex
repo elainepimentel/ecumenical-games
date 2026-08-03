@@ -58,5 +58,127 @@
 \end{abstract}
 
 \section{Introduction}
+\begin{itemize}
+\item Describe Hintika games for classical and intuitionistic logics
+\item How can we combine tactics so that the classical and intuitionistic do not collapse?
+\end{itemize}
+
+Outline:
+\begin{enumerate}
+\item Classical cost of proofs:
+\begin{itemize}
+\item Start with the sequent system with stoup. 
+\item Define a game where the {\em state} is only one sequent. With rules with only one premise, substitute one for the other. With two, the player ``You'' chooses the premise.
+\item Prove adequacy.
+\item Define and add classical budget to the games. Each time a classical rule is used, ``pay'' 1. The budget should be a string, and ``paying'' means appending 1 or 0 to the string, depending if the move is classical or intuitionistic. 
+\item Define a labelled sequent system, with costs as labels. Difficult question: how to combine them?
+\item Try to prove cut-elimination, etc.
+\end{itemize}
+\item Satisfiability and validity games.
+\begin{itemize}
+\item Start with an ecumenical game on satisfiability where the players ``I'' and ``You'' can take the roles of $\Op, \Ppi,\Ppc$ for opponent, proponent on a classical role, proponent on an intuitionistic role respectively. 
+\item Define the satisfiability game on Kripke structures. This will generate a labeled game.
+\item Move to a (labeled) validity game.
+\item Extract a (labeled) sequent system. 
+\item Prove that this system is equivalent to the one with stoup.
+\end{itemize}
+\end{enumerate}
+
+
+\section{Pure semantics proposal}
+ In 2021, Marin et al. \cite{pureViewEcumenicalModalities}\footnote{see \cite{DBLP:conf/dali/MarinPPS20, marin2022separabilityharmonyecumenicalsystems, pereira2022ecumenicalnaturaldeductionstoup, TourEcumenicalpimentel_et_al:LIPIcs.CALCO.2023.3} for further discussion} proposed a pure sequent calculus system equivalent to Prawitz's ecumenical system. Their motivation departs from the observation that ``Although being a powerful tool for describing proof-theoretical properties of Prawitz’ ecumenical logic, LE is not satisfactory as a logical system since it is not pure" \cite{TourEcumenicalpimentel_et_al:LIPIcs.CALCO.2023.3}. Their strategy in building a pure system is to (i) work with ``a new notion of polarities for ecumenical formulas" \cite{pureViewEcumenicalModalities}\footnote{
+%\begin{definition}[Positive and Negative formulas]
+A formula is said to be \textbf{negative} if its main connective is classical and \textbf{positive} otherwise.
+%\end{definition}
+}; 
+and (ii) use Girard's notion of stoup \cite{Girard_1991} to control rule applications by separating contexts into bins. In their system, sequents have the form $\Gamma \Rightarrow \Delta;\Sigma$ where $\Gamma, \Delta, \Sigma$ represent multisets of formulae, and the \textit{stoup} $\Sigma$, is limited to containing at most one formula. Two structural rules, \textit{Store} and \textit{Dereliction}, control how formulas move in and out of the \textit{stoup} area:
+
+    \begin{center}
+    \begin{minipage}[b]{.3 \textwidth}
+        \begin{prooftree}
+          \AxiomC{$\Gamma \Rightarrow \Delta,P; P$}
+          \UnaryInfC{$\Gamma \Rightarrow \Delta,P;.$}   
+        \end{prooftree}
+    \end{minipage}
+    \begin{minipage}[b]{.3 \textwidth}
+        \begin{prooftree}
+        \AxiomC{$\Gamma \Rightarrow \Delta, N;.$}
+        \UnaryInfC{$\Gamma \Rightarrow \Delta; N$}
+        \end{prooftree}
+    \end{minipage}
+    \end{center}
+
+Our proposal is to develop a game semantics with respect to the pure ecumenical system described above with two players, me and you, and three roles: an opponent \textbf{$O$}, a classical proponent \textbf{$P^c$} and an intuitionistic proponent \textbf{$P^i$}. The usual restrictions for intuitionistic dialogues are imposed only to $P^i$.
+
+\begin{figure}[htp]
+{\sc Intuitionistic and neutral Rules}
+$$
+\infer[{\wedge L}]{\Seq{\Gamma, A \wedge B}{ \Pi} {\Delta}}{\Seq{\Gamma,
+A, B}{ \Pi}{\Delta}} 
+\quad
+\infer[{\wedge R}]{\Seq{\Gamma}
+{A \wedge B}{\Delta}}{\deduce{\Seq{\Gamma} {A}{\Delta}}{} &\deduce{\Seq{\Gamma}{B}{\Delta}}{}} 
+$$
+$$
+\infer[{\vee_i L}]{\Seq{\Gamma, A \vee_i B}{ \Pi}{\Delta}
+}{\deduce{\Seq{\Gamma, A}{ \Pi}{\Delta}}{} &\deduce{\Seq{\Gamma,B}{\Pi}{\Delta}}{}} 
+\quad
+\infer[{\vee_i R_j}]{\Seq{\Gamma}{ A_1\vee_i A_2}{\Delta}}{\Seq{\Gamma}{ A_j}{\Delta}} 
+$$
+$$
+\infer[{\iimp L}]{\Seq{\Gamma, A\iimp B}{
+\Pi}{\Delta}}
+{\Seq{\Gamma, A\iimp B}{ A}{\Delta} & \Seq{\Gamma , B} 
+{\Pi}\Delta} 
+\quad
+\infer[{\iimp R}]{\Seq{\Gamma}
+{x:A\iimp B}{\Delta}}{\Seq{\Gamma,A}{B}{\Delta}}
+$$
+$$
+\infer[{\neg L}]{\Seq{\Gamma,\neg A}{\cdot}{\Delta}
+}{\Seq{\Gamma, \neg A}{  A}{\Delta}}
+\quad
+\infer[{\neg R}]{\Seq{\Gamma} 
+{\neg A}{\Delta}}{\Seq{\Gamma,A}{\cdot}{\Delta}}
+$$
+{\sc Classical Rules}
+$$
+\infer[\cimp L]{\Seq{\Gamma, A \rightarrow_c B}{\cdot}{\Delta} }{\Seq{\Gamma, A \rightarrow_c B}{A}{\Delta}&\Seq{\Gamma,  B}{\cdot}{\Delta}}
+\quad
+\infer[\cimp R]{\Seq{\Gamma} {\cdot}{ A\rightarrow_c B,\Delta}}{\Seq{\Gamma, A}{  \cdot}{B,\Delta}} 
+$$
+$$
+\infer[\vee_cL]{\Seq{\Gamma,  A \vee_c B}{\cdot}{\Delta}}{\Seq{\Gamma,A}{ \cdot}{\Delta} & \Seq{\Gamma,B}{ \cdot}{\Delta}} 
+\quad
+\infer[\vee_cR]{\Seq{\Gamma}{\cdot}{A \vee_c B, \Delta}}{\Seq{\Gamma}{ \cdot}{A,B,\Delta}}
+$$
+$$
+\infer[L_c]{\Seq{\Gamma, p_c}{\cdot}{\Delta}}{\Seq{\Gamma,p_i}{ \cdot}{\Delta}}
+\quad
+\infer[R_c]{\Seq{\Gamma}{\cdot}{p_c,\Delta}}{\Seq{\Gamma}{ \cdot}{p_i,\Delta}} 
+$$
+{\sc Initial, Decision and Structural Rules}
+$$
+\infer[\init_i]{\Seq{\Gamma,A}{A}{\Delta}}{} 
+\qquad
+\infer[\init_c]{\Seq{\Gamma,A}{\Pi}{A,\Delta}}{} 
+$$
+$$
+\infer[\D]{\Seq{\Gamma}{ \cdot}{P,\Delta}}{\Seq{\Gamma}{ P}{P,\Delta}} 
+\qquad
+\infer[\store]{\Seq{\Gamma}{N}{\Delta}}{\Seq{\Gamma}{ \cdot}{N,\Delta}}
+\qquad
+\infer[\W]{\Seq{\Gamma}{A}{\Delta}}{\Seq{\Gamma}{ \cdot}{\Delta}} 
+$$
+%{\sc Cut Rules}
+%$$
+%\begin{array}{c@{\qquad}c}
+%\infer[\cut_P]{\Seq{\Gamma}{ \Pi}{\Delta}}{\Seq{\Gamma}{P}{\Delta} & \Seq{P,\Gamma}{ \Pi}{\Delta}} 
+%&
+%\infer[\cut_N]{\Seq{\Gamma}{ \Pi}{\Delta}}{\Seq{\Gamma}{ \Pi^*}{\Delta, N} & \Seq{N,\Gamma}{ \Pi}{\Delta}} 
+%\end{array}
+%$$
+\caption{Ecumenical pure  system $\labEK$. $N$ is negative (classical) and $P$ is positive (intuitionistic); $p$ is atomic; $\Pi^*$ is either empty or some $P\in\Delta$.}\label{fig:labEK}
+\end{figure}
 
 \end{document}
