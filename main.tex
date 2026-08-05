@@ -140,7 +140,7 @@ $$
 {\Pi}\Delta} 
 \quad
 \infer[{\iimp R}]{\Seq{\Gamma}
-{x:A\iimp B}{\Delta}}{\Seq{\Gamma,A}{B}{\Delta}}
+{A\iimp B}{\Delta}}{\Seq{\Gamma,A}{B}{\Delta}}
 $$
 $$
 \infer[{\neg L}]{\Seq{\Gamma,\neg A}{C}{\Delta}
@@ -151,19 +151,19 @@ $$
 $$
 {\sc Classical Rules}
 $$
-\infer[\cimp L]{\Seq{\Gamma, A \rightarrow_c B}{\bot}{\Delta} }{\Seq{\Gamma, A \rightarrow_c B}{A}{\Delta}&\Seq{\Gamma,  B}{\bot}{\Delta}}
+\infer[\cimp L]{\Seq{\Gamma, A \rightarrow_c B}{C}{\Delta} }{\Seq{\Gamma, A \rightarrow_c B}{A}{\Delta}&\Seq{\Gamma,  B}{\bot}{\Delta}}
 \quad
-\infer[\cimp R]{\Seq{\Gamma} {\bot}{ A\rightarrow_c B,\Delta}}{\Seq{\Gamma, A}{  \bot}{B,\Delta}} 
+\infer[\cimp R]{\Seq{\Gamma} {C}{ A\rightarrow_c B,\Delta}}{\Seq{\Gamma, A}{  \bot}{B,\Delta}} 
 $$
 $$
-\infer[\vee_cL]{\Seq{\Gamma,  A \vee_c B}{\bot}{\Delta}}{\Seq{\Gamma,A}{ \bot}{\Delta} & \Seq{\Gamma,B}{ \bot}{\Delta}} 
+\infer[\vee_cL]{\Seq{\Gamma,  A \vee_c B}{C}{\Delta}}{\Seq{\Gamma,A}{ \bot}{\Delta} & \Seq{\Gamma,B}{ \bot}{\Delta}} 
 \quad
-\infer[\vee_cR]{\Seq{\Gamma}{\bot}{A \vee_c B, \Delta}}{\Seq{\Gamma}{ \bot}{A,B,\Delta}}
+\infer[\vee_cR]{\Seq{\Gamma}{C}{A \vee_c B, \Delta}}{\Seq{\Gamma}{ \bot}{A,B,\Delta}}
 $$
 $$
-\infer[L_c]{\Seq{\Gamma, p_c}{\bot}{\Delta}}{\Seq{\Gamma,p_i}{ \bot}{\Delta}}
+\infer[L_c]{\Seq{\Gamma, p_c}{C}{\Delta}}{\Seq{\Gamma,p_i}{ \bot}{\Delta}}
 \quad
-\infer[R_c]{\Seq{\Gamma}{\bot}{p_c,\Delta}}{\Seq{\Gamma}{ \bot}{p_i,\Delta}} 
+\infer[R_c]{\Seq{\Gamma}{C}{p_c,\Delta}}{\Seq{\Gamma}{ \bot}{p_i,\Delta}} 
 $$
 {\sc Initial, Decision and Structural Rules}
 $$
@@ -178,15 +178,15 @@ $$
 %\qquad
 %\infer[\W]{\Seq{\Gamma}{A}{\Delta}}{\Seq{\Gamma}{ \bot}{\Delta}} 
 $$
-%{\sc Cut Rules}
-%$$
-%\begin{array}{c@{\qquad}c}
-%\infer[\cut_P]{\Seq{\Gamma}{ \Pi}{\Delta}}{\Seq{\Gamma}{P}{\Delta} & \Seq{P,\Gamma}{ \Pi}{\Delta}} 
-%&
-%\infer[\cut_N]{\Seq{\Gamma}{ \Pi}{\Delta}}{\Seq{\Gamma}{ \Pi^*}{\Delta, N} & \Seq{N,\Gamma}{ \Pi}{\Delta}} 
-%\end{array}
-%$$
-\caption{Ecumenical pure  system $\LE$. $N$ is negative and $P$ is positive; $p$ is atomic.}\label{fig:labEK}
+{\sc Cut Rules}
+$$
+\begin{array}{c@{\qquad}c}
+\infer[\cut_P]{\Seq{\Gamma}{ \Pi}{\Delta}}{\Seq{\Gamma}{P}{\Delta} & \Seq{P,\Gamma}{ \Pi}{\Delta}} 
+&
+\infer[\cut_N]{\Seq{\Gamma}{ \Pi}{\Delta}}{\Seq{\Gamma}{ \Pi^*}{\Delta, N} & \Seq{N,\Gamma}{ \Pi}{\Delta}} 
+\end{array}
+$$
+\caption{Ecumenical pure  system $\LE$. $N$ is negative and $P$ is positive; $p$ is atomic.  $\Pi^*$ is either $\bot$ or a $P\in\Delta$.}\label{fig:labEK}
 \end{figure}
 
 \bibliography{references} 
