@@ -1,0 +1,154 @@
+%!TEX root = main.tex
+%!TEX spellcheck = en-US
+
+In~\cite{DBLP:journals/logcom/MarinPPS25} a pure sequent calculus system ($\LE$) equivalent to Prawitz's ecumenical natrural deduction system $\NE$ was proposed\footnote{See \cite{DBLP:conf/dali/MarinPPS20,DBLP:journals/synthese/PimentelPP21,DBLP:conf/wollic/MarinPPS21,DBLP:conf/calco/PimentelP23,Pereira2024} for further discussion on ecumenism, harmony and purity of ecumenical systems.}. The motivation departs from the observation that ``Although being a powerful tool for describing proof-theoretical properties of Prawitz's $\NE$ is not satisfactory as a logical system since it is not pure''. 
+
+The strategy in building a pure system is to (i) work with ``a new notion of polarities for ecumenical formulas''; 
+and (ii) use Girard's notion of stoup \cite{DBLP:journals/mscs/Girard91} to control rule applications by separating contexts into bins. In their system, sequents have the form $\Gamma \Rightarrow \Delta;\Sigma$ where $\Gamma, \Delta, \Sigma$ represent multisets of formulas, and the \textit{stoup} $\Sigma$, is limited to containing exactly one formula. Two structural rules, \textit{Store} and \textit{Dereliction}, control how formulas move in and out of the \textit{stoup} area:
+
+    \begin{center}
+    \begin{minipage}[b]{.3 \textwidth}
+        \begin{prooftree}
+          \AxiomC{$\Gamma \Rightarrow \Delta,P; P$}
+          \UnaryInfC{$\Gamma \Rightarrow \Delta,P;A$}   
+        \end{prooftree}
+    \end{minipage}
+    \begin{minipage}[b]{.3 \textwidth}
+        \begin{prooftree}
+        \AxiomC{$\Gamma \Rightarrow \Delta, N;\bot$}
+        \UnaryInfC{$\Gamma \Rightarrow \Delta; N$}
+        \end{prooftree}
+    \end{minipage}
+    \end{center}
+
+Our proposal is to develop a game semantics with respect to the pure ecumenical system described above with two players, $\I$  and $\Y$.
+
+{\bf TODO:}
+\begin{itemize}
+\item Define positive and negative formulas. In particular, should we have negation? Add the discussion about 2 negations and how it does not affect {\em provability}, but it does matter for the definition of semantics and game steps.
+\item Question: should we have int. and classical atoms? In my opinion we should not! Hence, if you want to win the game $\neg\neg p\to p$ with an intuitionistic negation, then the implication {\em must be}  classical and the cost is 100. Otherwise one could have an intuitionistic implication and the cost would be 0001...
+\item I've commented weakening, since it can be simulated using dereliction and negation. Is this okay?
+\end{itemize}
+
+
+\begin{figure}[htp]
+{\sc Intuitionistic and neutral Rules}
+$$
+\infer[{\wedge L}]{\Seq{\Gamma, A \wedge B}{ \Pi} {\Delta}}{\Seq{\Gamma,
+A, B}{ \Pi}{\Delta}} 
+\quad
+\infer[{\wedge R}]{\Seq{\Gamma}
+{A \wedge B}{\Delta}}{\deduce{\Seq{\Gamma} {A}{\Delta}}{} &\deduce{\Seq{\Gamma}{B}{\Delta}}{}} 
+$$
+$$
+\infer[{\vee_i L}]{\Seq{\Gamma, A \vee_i B}{ \Pi}{\Delta}
+}{\deduce{\Seq{\Gamma, A}{ \Pi}{\Delta}}{} &\deduce{\Seq{\Gamma,B}{\Pi}{\Delta}}{}} 
+\quad
+\infer[{\vee_i R_j}]{\Seq{\Gamma}{ A_1\vee_i A_2}{\Delta}}{\Seq{\Gamma}{ A_j}{\Delta}} 
+$$
+$$
+\infer[{\iimp L}]{\Seq{\Gamma, A\iimp B}{
+\Pi}{\Delta}}
+{\Seq{\Gamma, A\iimp B}{ A}{\Delta} & \Seq{\Gamma , B} 
+{\Pi}\Delta} 
+\quad
+\infer[{\iimp R}]{\Seq{\Gamma}
+{A\iimp B}{\Delta}}{\Seq{\Gamma,A}{B}{\Delta}}
+$$
+$$
+\infer[{\neg L}]{\Seq{\Gamma,\neg A}{C}{\Delta}
+}{\Seq{\Gamma, \neg A}{  A}{\Delta}}
+\quad
+\infer[{\neg R}]{\Seq{\Gamma} 
+{\neg A}{\Delta}}{\Seq{\Gamma,A}{\bot}{\Delta}}
+$$
+{\sc Classical Rules}
+$$
+\infer[\cimp L]{\Seq{\Gamma, A \rightarrow_c B}{C}{\Delta} }{\Seq{\Gamma, A \rightarrow_c B}{A}{\Delta}&\Seq{\Gamma,  B}{\bot}{\Delta}}
+\quad
+\infer[\cimp R]{\Seq{\Gamma} {C}{ A\rightarrow_c B,\Delta}}{\Seq{\Gamma, A}{  \bot}{B,\Delta}} 
+$$
+$$
+\infer[\vee_cL]{\Seq{\Gamma,  A \vee_c B}{C}{\Delta}}{\Seq{\Gamma,A}{ \bot}{\Delta} & \Seq{\Gamma,B}{ \bot}{\Delta}} 
+\quad
+\infer[\vee_cR]{\Seq{\Gamma}{C}{A \vee_c B, \Delta}}{\Seq{\Gamma}{ \bot}{A,B,\Delta}}
+$$
+$$
+\infer[L_c]{\Seq{\Gamma, p_c}{C}{\Delta}}{\Seq{\Gamma,p_i}{ \bot}{\Delta}}
+\quad
+\infer[R_c]{\Seq{\Gamma}{C}{p_c,\Delta}}{\Seq{\Gamma}{ \bot}{p_i,\Delta}} 
+$$
+{\sc Initial, Decision and Structural Rules}
+$$
+\infer[\init_i]{\Seq{\Gamma,A}{A}{\Delta}}{} 
+\qquad
+\infer[\init_c]{\Seq{\Gamma,A}{\Pi}{A,\Delta}}{} 
+$$
+$$
+\infer[\D]{\Seq{\Gamma}{C}{P,\Delta}}{\Seq{\Gamma}{ P}{P,\Delta}} 
+\qquad
+\infer[\store]{\Seq{\Gamma}{N}{\Delta}}{\Seq{\Gamma}{ \bot}{N,\Delta}}
+%\qquad
+%\infer[\W]{\Seq{\Gamma}{A}{\Delta}}{\Seq{\Gamma}{ \bot}{\Delta}} 
+$$
+{\sc Cut Rules}
+$$
+\begin{array}{c@{\qquad}c}
+\infer[\cut_P]{\Seq{\Gamma}{ \Pi}{\Delta}}{\Seq{\Gamma}{P}{\Delta} & \Seq{P,\Gamma}{ \Pi}{\Delta}} 
+&
+\infer[\cut_N]{\Seq{\Gamma}{ \Pi}{\Delta}}{\Seq{\Gamma}{ \Pi^*}{\Delta, N} & \Seq{N,\Gamma}{ \Pi}{\Delta}} 
+\end{array}
+$$
+\caption{Ecumenical pure  system $\LE$. $N$ is negative and $P$ is positive; $p$ is atomic.  $\Pi^*$ is either $\bot$ or a $P\in\Delta$.}\label{fig:labEK}
+\end{figure}
+
+
+\subsection{Ecumenical birelational models}\label{sec:bi}
+In~\cite{luiz17}, an ecumenical Kripke semantics was introduced in which the classical connectives are interpreted via a double-negation translation. Their semantic clauses thus inherit the dependence on accessible worlds characteristic of intuitionistic negation. Here, we propose an alternative ecumenical semantics in which classical behaviour is captured through a classical notion of negation. 
+
+The resulting clauses for the classical connectives are \emph{local}: they refer to the evaluation of their immediate subformulas at the current world, without introducing quantification over accessible worlds. %This way a classical version of the game would coincide with provability in classical logics!
+
+\elaine{I am not sure how to define this!}
+
+\begin{definition}\label{def:ekripke} A {\em birelational Kripke model} is a quadruple  
+$\m=(W,\leq,R,V)$ where $(W,R,V)$ is a Kripke model
+such that $\wld$ is partially ordered with order $\leq$, $R\subset W\times W$ is a binary relation, the 
+satisfaction function $V:\langle W,\leq\rangle\rightarrow  \langle2^\Prop,\subseteq\rangle$ is monotone and:
+
+\noindent
+F1. For all worlds $w,v,v'$, if $wRv$ and $v \leq v'$, there is a $w'$ such that $w \leq w'$ and $w'Rv'$;
+
+\noindent
+F2. For all worlds $w', w, v$, if $w \leq w'$ and $wRv$, there is a $v'$ such that $w'Rv'$ and $v \leq v'$.
+
+An {\em ecumenical modal Kripke model} is a birelational Kripke model such that truth of an ecumenical formula at a point $w$ is the
+smallest relation $\modelse$ satisfying 
+
+\noindent
+$
+\begin{array}{l@{\quad}c@{\quad}l}
+\m,w\modelse p & \mbox{ iff } & p\in \val(w);\\
+\m,w\modelse A\wedge B & \mbox{ iff } & \m,w\modelse A \mbox{ and } \m,w\modelse B;\\
+\m,w\modelse A\vee_i B & \mbox{ iff } & \m,w\modelse A \mbox{ or } \m,w\modelse B;\\
+\m,w\modelse A\iimp B & \mbox{ iff } & \text{for all } v \text{ such that  }w \leq v,   
+\m,v\modelse A \mbox{ implies }  \m,v\modelse B;\\
+%\m,w\modelse \neg A & \mbox{ iff } & \text{for all } v \text{ such that  }w \leq v, \m,v\not\modelse A;\\
+\m,w\modelsec \neg A & \mbox{ iff } &   \magenta{\m,w\not\modelsec A};\\
+\m,w \modelse \bot & & \mbox{never holds};\\
+\m,w\modelse A & \mbox{ iff } & \m,w\modelsec A \mbox{ if $A$ is classical};\\
+\m,w\modelsec A & \mbox{ iff } & \m,w\modelse A \mbox{ if $A$ is neutral/intuitionistic};\\
+%\m,w\modelse p_c  & \mbox{ iff } & \m,w\modelse \neg(\neg p_i);\\
+\m,w\modelsec A\vee_c B & \mbox{ iff } & \magenta{\m,w\modelsec A \mbox{ or } \m,w\modelsec B};\\
+\m,w\modelsec A\cimp B & \mbox{ iff } & \magenta{\m,w\not\modelsec  A \mbox{ or } \m,w\modelsec B}.
+\end{array}
+$
+
+We say that a formula $A$ is {\em valid} in a model $\m=(W,\leq,R,V)$ if for all $w\in  W$ we have $w\modelse A$. A formula $A$ is {\em valid} in a frame $\langle W,\leq,R\rangle$ if, for all valuations $V$, $A$ is valid in the model $(W,\leq,R,V)$. Finally, we say a formula is {\em valid}, if it is valid in all frames.
+\end{definition}
+Since, restricted to intuitionistic and neutral connectives, $\modelse$ is the usual birelational interpretation $\models$ for $\IK$~\cite{plotkin:stirling:86,Sim94}, and since the classical connectives are interpreted 
+via the neutral ones using the double-negation translation, an ecumenical modal Kripke model coincides with the standard birelational Kripke model for intuitionistic modal logic $\IK$. Hence the following result easily holds from the similar result for $\IK$.
+\begin{theorem}[\cite{DBLP:conf/dali/MarinPPS20}]\label{thm:scLEci} The system
+$\labEK$ is sound and complete w.r.t.~the ecumenical modal Kripke semantics, that is, $\vdash_{\labEK} x: A$ iff $\modelse A$.
+\end{theorem}
+We end this section with a small note on the relationship between the semantics and the dynamics of proofs. 
+On a bottom-up reading of proofs, the $\store$ rule is a delay on applying rules over classical connectives. It corresponds to  moving the formula up w.r.t. $\leq$ in the birelational semantics. The rule $\Box R$, on the other hand, slides the formula to a fresh new world, related to the former one through the relation $R$. Finally, rule $\neg R$ moves up the formula w.r.t. $\leq$. 
