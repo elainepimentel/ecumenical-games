@@ -55,13 +55,6 @@ $$
 \infer[{\iimp R}]{\Seq{\Gamma}
 {A\iimp B}{\Delta}}{\Seq{\Gamma,A}{B}{\Delta}}
 $$
-$$
-\infer[{\neg L}]{\Seq{\Gamma,\neg A}{C}{\Delta}
-}{\Seq{\Gamma, \neg A}{  A}{\Delta}}
-\quad
-\infer[{\neg R}]{\Seq{\Gamma} 
-{\neg A}{\Delta}}{\Seq{\Gamma,A}{\bot}{\Delta}}
-$$
 {\sc Classical Rules}
 $$
 \infer[\cimp L]{\Seq{\Gamma, A \rightarrow_c B}{C}{\Delta} }{\Seq{\Gamma, A \rightarrow_c B}{A}{\Delta}&\Seq{\Gamma,  B}{\bot}{\Delta}}
@@ -73,10 +66,17 @@ $$
 \quad
 \infer[\vee_cR]{\Seq{\Gamma}{C}{A \vee_c B, \Delta}}{\Seq{\Gamma}{ \bot}{A,B,\Delta}}
 $$
+%$$
+%\infer[L_c]{\Seq{\Gamma, p_c}{C}{\Delta}}{\Seq{\Gamma,p_i}{ \bot}{\Delta}}
+%\quad
+%\infer[R_c]{\Seq{\Gamma}{C}{p_c,\Delta}}{\Seq{\Gamma}{ \bot}{p_i,\Delta}} 
+%$$
 $$
-\infer[L_c]{\Seq{\Gamma, p_c}{C}{\Delta}}{\Seq{\Gamma,p_i}{ \bot}{\Delta}}
+\infer[{\neg L}]{\Seq{\Gamma,\neg A}{C}{\Delta}
+}{\Seq{\Gamma, \neg A}{  A}{\Delta}}
 \quad
-\infer[R_c]{\Seq{\Gamma}{C}{p_c,\Delta}}{\Seq{\Gamma}{ \bot}{p_i,\Delta}} 
+\infer[{\neg R}]{\Seq{\Gamma} 
+{\neg A}{\Delta}}{\Seq{\Gamma,A}{\bot}{\Delta}}
 $$
 {\sc Initial, Decision and Structural Rules}
 $$
