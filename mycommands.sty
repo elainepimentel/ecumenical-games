@@ -180,7 +180,6 @@
 \newcommand{\B}{\mathsf{B}}
 \newcommand{\be}{\mathsf{b}}
 \newcommand{\C}{\mathsf{C}}
-\newcommand{\CK}{\mathsf{CK}}
 \newcommand{\ccut}{\ct{\mathsf{cut}}}
 \newcommand{\cexists}{\exists_{c}}
 \newcommand{\cimp}{\rightarrow_c}
@@ -234,19 +233,14 @@
 \newcommand{\logicik}{\textsf{IK}}
 \newcommand{\Lor}{\bigvee}
 \newcommand\lra{\longrightarrow}
-\newcommand{\LC}{\mathsf{LC}}
 \newcommand{\LCE}{\mathsf{LCE}}
 \newcommand{\LCEm}{\mathsf{LCEm}}
-\newcommand\LJ{\textsf{LJ}}
 \newcommand\LE{\mathsf{LE}}
 \newcommand\LEc{\mathsf{LEc}}
 \newcommand\LEci{\mathsf{LEci}}
-\newcommand\LJp{\mathsf{LJp}}
 \newcommand{\LJT}{\mathsf{LJT}}
 \newcommand{\LJQ}{\mathsf{LJQ}}
-\newcommand\LK{\textsf{LK}}
 \newcommand\LKJ{\textsf{LKJ}}
-\newcommand{\LL}{\mathsf{LL}}
 \newcommand{\LLF}{\mathsf{LLF}}
 \newcommand{\LLS}{\mathsf{LLS}}
 \newcommand{\LLNS}{\mathsf{LLNS}}
@@ -254,9 +248,7 @@
 \newcommand{\LNS}{\mathsf{LNS}}
 \newcommand{\LS}{\mathsf{LS}}
 \newcommand{\LTS}{\mathsf{LTS}}
-\newcommand\LU{\textsf{LU}}
 \newcommand{\m}{\mathcal{M}}
-\newcommand{\M}{\mathsf{M}}
 \newcommand{\mcut}{\mathsf{mcut}}
 \newcommand\mLJ{\textsf{mLJ}}
 \newcommand\mLEci{\mathsf{mLEci}}
@@ -281,7 +273,6 @@
 \newcommand{\Prem}{\mathcal{P}}
 \newcommand{\Prop}{\mathcal{P}}
 \newcommand{\pspace}{\mathsf{PSPACE}}
-\newcommand\ra\rightarrow
 \newcommand{\ran}{\rangle}
 \newcommand{\rarr}{\rightarrow}
 \newcommand{\rel}{R}
@@ -316,3 +307,313 @@
 \newcommand{\T}{\mathsf{T}}
 \newcommand{\Sc}{\mathsf{S^c}}
 \newcommand{\Si}{\mathsf{S^i}}
+
+% shortcuts
+\newcommand{\Ic}{\emph{I}\xspace}
+\newcommand{\You}{\emph{You}\xspace}
+\newcommand{\My}{\emph{My}\xspace}
+\newcommand{\Myself}{\emph{Myself}\xspace}
+\newcommand{\Me}{\emph{Me}\xspace}
+\newcommand{\Your}{\emph{Your}\xspace}
+
+%\newcommand{\DS}{\mathbf{DS}^{HPNL}}
+
+\newcommand{\DS}{\mathbf{DS}}
+\newcommand{\dDS}{\mathbf{dDS}}
+\newcommand{\DG}{\mathbf{DG}}
+
+\newcommand{\At}{\mathsf{At}}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\rs}[3]{#1;#2\seq #3}
+\newcommand{\rc}{\mathcal{R}}
+
+%Modal Logic abbreviations
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\IM}{\mathcal{I}}
+\newcommand{\A}{\mathsf{A}}
+\newcommand{\R}{\mathsf{R}}
+\newcommand{\V}{\mathsf{V}}
+\newcommand{\g}{\mathsf{g}}
+\newcommand{\ag}{\mathsf{a}}
+\renewcommand{\b}{\mathsf{b}}
+%\renewcommand{\c}{\mathsf{c}}
+\newcommand{\f}{\mathsf{f}}
+
+\renewcommand{\qed}{\hfill$\blacksquare$}
+
+%\newtheorem{example}{Example}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{notation}{Notation}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{definition}{Definition}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{remark}{Remark}
+%\newtheorem{corollary}{Corollary}
+%\renewenvironment{proof}{\noindent\textit{Proof:}\quad}{\qed}
+
+% Some PNL operators
+\newcommand{\pnlP}{\langle \bigdoublewedge+ \rangle }
+\newcommand{\pnlN}{\langle\bigdoublewedge-\rangle}
+\newcommand{\pnlPN}{\langle\bigdoublewedge\pm\rangle}
+\newcommand{\pnlOP}{\langle\oplus\rangle}
+\newcommand{\pnlON}{\langle\ominus\rangle}
+\newcommand{\dplus}{\meddiamondplus}
+%\newcommand{\dplus}{\ensurestackMath{%
+ % \stackengine{.8pt}{\Diamond}{\scalebox{.9}[1]{$+$}}{O}{c}{F}{F}{L}}}
+\newcommand{\dminus}{\meddiamondminus}
+%\newcommand{\dminus}{\ensurestackMath{%
+  %\stackengine{.8pt}{\Diamond}{\scalebox{.9}[1]{$-$}}{O}{c}{F}{F}{L}}}
+\newcommand{\bplus}{\boxplus}
+\newcommand{\bminus}{\boxminus}
+\newcommand{\dplusminus}{\meddiamond^{\pm}}
+\renewcommand{\Diamond}{\meddiamond}
+
+
+\newcommand{\pP}{\wedge\hspace{-0.25cm}\wedge\!\!+ }
+\newcommand{\pN}{\wedge\hspace{-0.25cm}\wedge\!\!-}
+\newcommand{\pPN}{\wedge\hspace{-0.25cm}\wedge\!\!\pm}
+
+\DeclareMathOperator*{\bigdoublewedge}{\wedge\mkern-15mu\wedge}
+
+% Some shorthands 
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bfP}{\mathbf{P}}
+\newcommand{\bfO}{\mathbf{O}}
+\newcommand{\Rinv}{R_{\leftrightarrow}}
+
+% Classes of models
+\newcommand{\ccpnlmodels}{\mathfrak{M}_{\textit{ccPNL}}}
+\newcommand{\pnlmodels}{\mathfrak{M}_{\textit{PNL}}}
+\newcommand{\namedmodels}{\mathfrak{M}_{\textit{N}}}
+
+\newcommand{\PNL}{\textbf{PNL}}
+\newcommand{\ccPNL}{\textbf{ccPNL}}
+\newcommand{\cc}{\textbf{cc}}
+\newcommand{\dPNL}{\textbf{dPNL}}
+
+% Lines in figures
+\def\headline#1{\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{#1}\quad\hrulefill}}
+
+%Timo
+
+\newcommand{\IG}{\ensuremath{\mathcal{G}}\xspace}
+
+%%Timo's
+\newcommand{\FLew}{\ensuremath{\textsf{FLew}}\xspace}
+\newcommand{\aSELL}{\ensuremath{\textsf{aSELL}}\xspace}
+%\newcommand{\I}{\ensuremath{\mathbf{I}}\xspace}
+\newcommand{\II}{\ensuremath{\mathbf{II}}\xspace}
+%\newcommand{\ts}[1][]{\rightarrow_{#1}}
+%\newcommand{\SG}{\mathcal{G}_{SELLS}}
+\newcommand{\GAILL}{\ensuremath{\mathcal{G}_{\aILL}}\xspace}
+\newcommand{\GAIMALL}{\ensuremath{\mathcal{G}_{\aIMALL}}\xspace}
+\newcommand{\GAIMALLA}{\ensuremath{\mathcal{G}_{\aIMALLA}}\xspace}
+\newcommand{\SG}{\ensuremath{\mathcal{G}_{\aSELL}}\xspace}
+\newcommand{\SGM}{\ensuremath{\mathcal{G}_{\aSELL}^-}\xspace}
+\newcommand{\SGKpv}{\ensuremath{\mathcal{G}_{\aSELL-\Kpv}}\xspace}
+\newcommand{\SGMKpv}{\ensuremath{\mathcal{G}_{\aSELL-\Kpv}^-}\xspace}
+
+\newcommand{\SGA}{\mathcal{G}_{\sellsC}}
+\newcommand{\cCost}{\mathcal{L}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\sellsC}{\ensuremath{SELLS^{\cCost}}\xspace}
+\newcommand{\asellC}{\ensuremath{\aSELL_{\cRp}^{\cCost}}\xspace}
+\newcommand{\asellCz}{\ensuremath{\aSELL_{\cRp}^{\cCost_0}}\xspace}
+\newcommand{\asellCKpv}{\ensuremath{\aSELL_{\Kpv}^{\cCost}}\xspace}
+\newcommand{ \asellCzKpv}{\ensuremath{\aSELL_{\Kpv}^{\cCost_0}}\xspace}
+\newcommand{\asellCK}{\ensuremath{\aSELL_{\Kpv}}\xspace}
+\newcommand{\costs}[1]{\ensuremath{\texttt{cost}(#1)}\xspace}
+%\newcommand{\vnbang}[1]{\ensuremath{\underset{\tilde{}}{!}^{#1}}}
+%\newcommand{\pnbang}[1]{\ensuremath{\underset{\bar{}}{!}^{#1}}}
+%\newcommand{\vnbang}[1]{\ensuremath{\ominus^{#1}}}
+%\newcommand{\pnbang}[1]{\ensuremath{\oplus^{#1}}}
+
+\newcommand{\vnbang}[1]{\ensuremath{\triangledown^{#1}}}
+\newcommand{\pnbang}[1]{\ensuremath{\blacktriangledown^{#1}}}
+
+\newcommand{\wins}[2]{\ensuremath{\models^{#1}_{#2}}}
+\newcommand{\asell}{\ensuremath{\aSELL_{\cRp}}\xspace}
+\newcommand{\spec}[1]{\ensuremath{\texttt{spec}(#1)}\xspace}
+\newcommand{\aILL}{\ensuremath{\textsf{aILL}}\xspace}
+\newcommand{\aIMALL}{\ensuremath{\textsf{aIMALL}}\xspace}
+\newcommand{\ILL}{\ensuremath{\textsf{ILL}}\xspace}
+\newcommand{\Tree}[1]{\ensuremath{\mathcal{T}(#1)}\xspace}
+\newcommand{\trans}[1]{\circ(#1)}
+\newcommand{\mfU}{\mathfrak{u}}
+\newcommand{\mfB}{\mathfrak{b}}
+\newcommand{\mfUB}{\mfU \mfB}
+\newcommand{\Kpv}{\cK^{\mfUB}}
+
+
+%%%%%%%%
+
+%\newtheorem{example}{Example}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{notation}{Notation}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{definition}{Definition}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{remark}{Remark}
+%\newtheorem{corollary}{Corollary}
+\renewenvironment{proof}{\noindent\textit{Proof:}\quad}{\qed}
+
+
+%Andreoli's focusing system
+
+\newcommand{\Up}[3]{#1;#2\Uparrow #3}
+\newcommand{\Down}[3]{#1;#2\Downarrow #3}
+\newcommand{\nng}[1]{#1^\perp}
+
+\DeclareMathAlphabet{\mathsl}{OT1}{cmr}{m}{sl}
+
+\newcommand{\false}{\texttt{false}}
+\newcommand{\true}{\texttt{true}}
+
+\newcommand{\SELL}{\ensuremath{\textsf{SELL}}\xspace}
+\newcommand{\MELL}{\ensuremath{\textsf{MELL}}\xspace}
+\newcommand{\pr}{\Xi}
+\newcommand{\prQ}{\Pi}
+
+\newcommand\lraA{\longrightarrow_{\alpha}}
+\newcommand\lraS[1]{\longrightarrow_{#1}}
+\newcommand\rla{\longleftarrow}
+\newcommand\uda{\downarrow}
+\newcommand\dua{\uparrow}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\realP}{\real^{+}}
+
+%Sequent systems
+\newcommand\CK{\textbf{CK}}
+\newcommand\LJ{\textbf{LJ}}
+\newcommand\LK{\textbf{LK}}
+\newcommand\LL{\textsf{LL}}
+\newcommand\LU{\textbf{LU}}
+\newcommand\LM{\textbf{LM}}
+\newcommand\NM{\textbf{NM}}
+\newcommand\ILU{\textbf{ILU}}
+\newcommand\FLL{\textbf{FLL}}
+\newcommand\IIL{\textbf{IIL}}
+\newcommand\IILs{\textbf{IIL*}}
+\newcommand\LJp{\textbf{LJ'}}
+\newcommand\LKQ{\textbf{LKQ}}
+\newcommand\LKT{\textbf{LKT}}
+\newcommand\LJK{\textbf{LJK}}
+\newcommand\LMone{\textbf{LM1}}
+\newcommand\LC{\textbf{LC}}
+\newcommand\LI{\textbf{LI}}
+\newcommand\LMC{\textbf{LMC}}
+\newcommand\LJN{\textbf{LJN}}
+\newcommand\Gtc{\textbf{G3c}}
+
+
+%Named clauses
+\newcommand\Cut{\hbox{\sl Cut}}
+\newcommand\Init{\hbox{\sl Init}}
+
+%Special arrows
+\newcommand\ra\rightarrow
+\newcommand\rimp{\Leftarrow}
+
+%Linear constants
+\newcommand\zero{{\bf 0}}
+\newcommand\one{{\bf 1}}
+\newcommand\bottom{\perp}
+\newcommand\bang{\mathop{!}}
+\newcommand\quest{\mathord{?}}
+%\newcommand\quest{\mathop{?}}
+\newcommand\limp{\mathbin{-\hspace{-0.70mm}\circ}}
+\newcommand\lolli{\mathbin{-\hspace{-0.70mm}\circ}}
+\newcommand\tensor\otimes
+\newcommand\with{\mathbin{\&}}
+\newcommand\bla{\mathrel{\mbox{$\circ\!-$}}}
+
+\def\Ascr{{\cal A}}
+\def\Bscr{{\cal B}}
+\def\Cscr{{\cal C}}
+\def\Dscr{{\cal D}}
+\def\Escr{{\cal E}}
+\def\Fscr{{\cal F}}
+\def\Gscr{{\cal G}}
+\def\Hscr{{\cal H}}
+\def\Iscr{{\cal I}}
+\def\Jscr{{\cal J}}
+\def\Kscr{{\cal K}}
+\def\Lscr{{\mathcal L}}
+\def\Mscr{{\cal M}}
+\def\Nscr{{\cal N}}
+\def\Oscr{{\cal O}}
+\def\Pscr{{\cal P}}
+\def\Qscr{{\cal Q}}
+\def\Rscr{{\cal R}}
+\def\Sscr{{\cal S}}
+\def\Tscr{{\cal T}}
+\def\Uscr{{\cal U}}
+\def\Vscr{{\cal V}}
+\def\Wscr{{\cal W}}
+\def\Xscr{{\cal X}}
+\def\Yscr{{\cal Y}}
+\def\Zscr{{\cal Z}}
+
+
+%  \draw package.  Vaughan Pratt  (C) 1993
+%
+%	*+,-|.|/012	Table of 81 vectors in [-4,4]x[-4,4]
+%	3456|7|89:;	Use as parameters to tell \draw how to step along
+%	<=>?|@|ABCD	\draw zzzzzzz\end draws a straight line 7 steps
+%	EFGH|I|JKLM	   down and to the right
+%       ----+-+----
+%	NOPQ|R|STUV	R = (0,0), C = (3,2), * = (-4,-4), r = (-4,4)
+%       ----+-+----
+%	WXYZ|[|\]^_	\draw -./9:CMV_gpowvukjaWNE=45\end
+%	`abc|d|efgh	   draws a reasonable circle
+%	ijkl|m|nopq
+%	rstu|v|wxyz
+%
+\newcount\PLv\newcount\PLw\newcount\PLx\newcount\PLy\newdimen\PLyy\newdimen\PLX
+\newbox\PLdot \setbox\PLdot\hbox{\tiny.} \def\scl{.08} % resettable scale
+\def\PLot#1{\PLx`#1\advance\PLx-42\PLy\PLx\PLv\PLx\divide\PLy9\PLw\PLy\multiply
+\PLw9\advance\PLx-\PLw\advance\PLx-4\PLy-\PLy\advance\PLy4\PLX=\the\PLx pt
+\advance\PLyy\the\PLy pt\wd\PLdot=\scl\PLX\raise\scl\PLyy\copy\PLdot}
+\def\draw#1{\ifx#1\end\let\next=\relax\else\PLot#1\let\next=\draw\fi\next}
+
+%  Girard's inverted ampersand.  Usage: \invamp. Draw time @ 10 Mips: .33 sec
+\def\invamp{\hbox{\PLyy=70pt\draw :::;DMV_gqppyyyyyooooxxxnnwvlutkjaWNE=5-./9%
+9:::CCCC:::99/..--544=EENWWaajjjkktttttttNNNVVVVVVVV\end \hskip4pt}}
+%  \Invamp = Boxed \invamp.  Draw time < .02 sec, but max ~300 chars/page
+\newbox\iabox\setbox\iabox\invamp \def\Invamp{\copy\iabox}
+
+\newcommand\lpar{\mathrel{\Invamp}}
+%\newcommand\lpar{\mathbin{\wp}}  % Looks ugly
+%\newcommand\lpar{\bindnasrepma}  % Needs stmaryrd.sty, not on all machines
+
+\long\def\hide#1\endhide{}
+
+
+\newcommand{\rUp}{R\mathord{\Uparrow}}
+\newcommand{\rDown}{R\mathord{\Downarrow}}
+
+
+ \newcommand{\ndots}[1]{\stackrel{\vcenter{\hbox{$\scriptstyle :$}
+ \vskip-.35ex}}{\hbox {$ \scriptstyle \mathsl{#1}$}}}
+
+
+
+\newcommand\cost[1]{\tsl{C}_{#1}}
+
+\DeclareMathAlphabet{\mathsl}{OT1}{cmr}{m}{sl}
+\newcommand\tsl[1]{\hbox{$\mathsl{#1}$}}
+
+\renewcommand{\iff}{\mbox{iff}}
+
+\newcommand{\nab}{\mathsf{n}^\beta_{a}}
+\newcommand{\naba}{\mathsf{n}^{\beta\times a}_{a}}
+
+\newcommand{\realbu}{\real^+\times\{\mathfrak{b},\mathfrak{u}\}}
+
+%Transition system
+\newcommand{\rede}[1]{\stackrel{\,\,#1\,\,}{\,\,
+\hspace{-0.1cm}\Longrightarrow}}
+
+

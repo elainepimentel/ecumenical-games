@@ -66,6 +66,14 @@
 
 Outline:
 \begin{enumerate}
+\item Satisfiability and validity games.
+\begin{itemize}
+\item Start with an ecumenical game on satisfiability where the players $\I$ and $\Y$ can take the roles of $\T, \Sc,\Si$ for ``tester'' and the ``scheduler'', where the later can assume classical or intuitionistic roles respectively. 
+\item Define the satisfiability game on Kripke structures. This will generate a labeled game.
+\item Move to a (labelled) validity game.
+\item Extract a (labelled) sequent system. 
+\item Prove that this system is equivalent to the one with stoup.
+\end{itemize}
 \item Classical cost of proofs:
 \begin{itemize}
 \item Start with the sequent system with stoup. 
@@ -74,14 +82,6 @@ Outline:
 \item Define and add classical budget to the games. Each time a classical rule is used, ``pay'' 1. The budget should be a string, and ``paying'' means appending 1 or 0 to the string, depending if the move is classical or intuitionistic. 
 \item Define a labelled sequent system, with costs as labels. Difficult question: how to combine them?
 \item Try to prove cut-elimination, etc.
-\end{itemize}
-\item Satisfiability and validity games.
-\begin{itemize}
-\item Start with an ecumenical game on satisfiability where the players $\I$ and $\Y$ can take the roles of $\T, \Sc,\Si$ for ``tester'' and the ``scheduler'', where the later can assume classical or intuitionistic roles respectively. 
-\item Define the satisfiability game on Kripke structures. This will generate a labeled game.
-\item Move to a (labelled) validity game.
-\item Extract a (labelled) sequent system. 
-\item Prove that this system is equivalent to the one with stoup.
 \end{itemize}
 \end{enumerate}
 
@@ -188,6 +188,9 @@ $$
 $$
 \caption{Ecumenical pure  system $\LE$. $N$ is negative and $P$ is positive; $p$ is atomic.  $\Pi^*$ is either $\bot$ or a $P\in\Delta$.}\label{fig:labEK}
 \end{figure}
+
+\section{Semantic games}\label{sec:semantic-games}
+\input{sem-games}
 
 \bibliography{references} 
 \end{document}
