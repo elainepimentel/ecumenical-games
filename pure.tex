@@ -108,31 +108,23 @@ In~\cite{luiz17}, an ecumenical Kripke semantics was introduced in which the cla
 
 The resulting clauses for the classical connectives are \emph{local}: they refer to the evaluation of their immediate subformulas at the current world, without introducing quantification over accessible worlds. %This way a classical version of the game would coincide with provability in classical logics!
 
-\begin{definition}\label{def:ekripke} A {\em birelational Kripke model} is a quadruple  
-$\m=(W,\leq,R,V)$ where $(W,R,V)$ is a Kripke model
-such that $\wld$ is partially ordered with order $\leq$, $R\subset W\times W$ is a binary relation, the 
-satisfaction function $V:\langle W,\leq\rangle\rightarrow  \langle2^\Prop,\subseteq\rangle$ is monotone and:
+\begin{definition}\label{def:ekripke} 
+A {\em birelational Kripke model} $\m$ is a pair $\langle F,V\rangle$ where $F=\langle W,\leq\rangle$ is an intuitionistic Kripke frame and $V$ is an intuitionistic valuation, \ie, $V$ is a mapping associating with each propositional variable $p$ an element of $U_{\leq}$, where $U_{\leq}$ is the set of all uppersets of $\langle W,\leq\rangle$, \ie, all sets $U\subseteq W$ such that if $w\in U$ and $w\leq v$, then $v\in U$.
 
-\noindent
-F1. For all worlds $w,v,v'$, if $wRv$ and $v \leq v'$, there is a $w'$ such that $w \leq w'$ and $w'Rv'$;
-
-\noindent
-F2. For all worlds $w', w, v$, if $w \leq w'$ and $wRv$, there is a $v'$ such that $w'Rv'$ and $v \leq v'$.
-
-An {\em ecumenical modal Kripke model} is a birelational Kripke model such that truth of an ecumenical formula at a point $w$ is the
-smallest relation $\modelse$ satisfying 
+An {\em ecumenical Kripke model} is a birelational Kripke model such that truth of an ecumenical formula at a point $w$ is the
+smallest relation $\models$ satisfying 
 
 \noindent
 $
 \begin{array}{l@{\quad}c@{\quad}l}
-\m,w\modelse p & \mbox{ iff } & p\in \val(w);\\
-\m,w\modelse A\wedge B & \mbox{ iff } & \m,w\modelse A \mbox{ and } \m,w\modelse B;\\
-\m,w\modelse A\vee_i B & \mbox{ iff } & \m,w\modelse A \mbox{ or } \m,w\modelse B;\\
-\m,w\modelse A\iimp B & \mbox{ iff } & \text{for all } v \text{ such that  }w \leq v, \m,v\modelse A \mbox{ implies }  \m,v\modelse B;\\
-\m,w \modelse \bot & & \mbox{never holds};\\
-\m,w\modelse \neg A & \mbox{ iff } &    \text{for all } v \text{ such that  }w \leq v, \m,v\not\modelse A ;\\
-\m,w\modelse A\vee_c B & \mbox{ iff } & \text{for all } v \text{ such that  }w \leq v, \m,v\modelse A \mbox{ or } \text{for all } u \text{ such that  }v \leq u, \m,u\modelse B;\\
-\m,w\modelse A\cimp B & \mbox{ iff } & \text{for all } v \text{ such that  }w \leq v, \m,v\not\modelse A \mbox{ or } \text{for all } u \text{ such that  }v \leq u, \m,u\modelse B.
+\m,w\models p & \mbox{ iff } & p\in \val(w);\\
+\m,w\models A\wedge B & \mbox{ iff } & \m,w\modelse A \mbox{ and } \m,w\models B;\\
+\m,w\models A\vee_i B & \mbox{ iff } & \m,w\modelse A \mbox{ or } \m,w\models B;\\
+\m,w\models A\iimp B & \mbox{ iff } & \text{for all } v \text{ such that  }w \leq v, \m,v\models A \mbox{ implies }  \m,v\models B;\\
+\m,w \models \bot & & \mbox{never holds};\\
+\m,w\models \neg A & \mbox{ iff } &    \text{for all } v \text{ such that  }w \leq v, \m,v\not\models A ;\\
+\m,w\models A\vee_c B & \mbox{ iff } & \text{for all } v \text{ such that  }w \leq v, \m,v\models A \mbox{ or } \text{for all } u \text{ such that  }v \leq u, \m,u\models B;\\
+\m,w\models A\cimp B & \mbox{ iff } & \text{for all } v \text{ such that  }w \leq v, \m,v\not\models A \mbox{ or } \text{for all } u \text{ such that  }v \leq u, \m,u\models B.
 \end{array}
 $
 
@@ -155,7 +147,7 @@ $
 %\end{array}
 %$
 
-We say that a formula $A$ is {\em valid} in a model $\m=(W,\leq,R,V)$ if for all $w\in  W$ we have $w\modelse A$. A formula $A$ is {\em valid} in a frame $\langle W,\leq,R\rangle$ if, for all valuations $V$, $A$ is valid in the model $(W,\leq,R,V)$. Finally, we say a formula is {\em valid}, if it is valid in all frames.
+We say that a formula $A$ is {\em valid in a model} $\m=(W,\leq,V)$ if $w\models A$ for all $w\in  W$. A formula $A$ is {\em valid in a frame} $\langle W,\leq\rangle$ if, for all valuations $V$, $A$ is valid in the model $(W,\leq,V)$. Finally, we say a formula $A$ is {\em valid}, denoted by $\modelse A$, if it is valid in all frames.
 \end{definition}
 
 \elaine{Some obs.
