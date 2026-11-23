@@ -1,0 +1,64 @@
+\begin{figure}
+\begin{minipage}[t]{\textwidth}
+    \hrulefill
+\begin{description}
+\item[$(\mathbf{P}_\wedge)$] At $\mathbf{P}, w: \phi_1\wedge \phi_2$, \You
+    choose between $\mathbf{P},w:\phi_1$ and 
+    $\mathbf{P},w:\phi_2$ to continue the game. 
+    
+\item[$(\mathbf{O}_\wedge)$] At $\mathbf{O}, w:
+    \phi_1\wedge \phi_2$, \Ic choose between $\mathbf{O}, w:\phi_1$
+    and $\mathbf{O}, w:\phi_2$ to continue the game. 
+
+\vspace{2mm}
+
+\item[$(\mathbf{P}_{\vee_i})$] At $\mathbf{P}, w: \phi_1 \vee_i \phi_2$, \Ic choose between $\mathbf{P}, w:\phi_1$ and $\mathbf{P}, w:\phi_2$ to continue the game.
+
+\item[$(\mathbf{O}_{\vee_i})$] At $\mathbf{O}, w: \phi_1 \vee_i \phi_2$, \You choose between $\mathbf{O}, w:\phi_1$ and $\mathbf{O}, w:\phi_2$ to continue the game.
+
+\vspace{2mm}
+
+\item[$(\mathbf{P}_{\vee_c})$] At $\mathbf{P}, w: \phi_1 \vee_c \phi_2$, \You choose $v \geq w$, \Ic choose $u \geq v$ and between $\mathbf{P}, u:\phi_1$ and $\mathbf{P}, u:\phi_2$ to continue the game.
+
+\item[$(\mathbf{O}_{\vee_c})$] At $\mathbf{O}, w: \phi_1 \vee_c \phi_2$, \Ic choose $v \geq w$, \You choose $u \geq v$ and between $\mathbf{O}, u:\phi_1$ and $\mathbf{O}, u:\phi_2$ to continue the game.
+
+\vspace{2mm}
+
+\item[$(\mathbf{P}_\neg)$] At $\mathbf{P}, w: \neg \phi$, \You choose $v \geq w$ and the game continues with $\mathbf{O}, v: \phi$.
+
+\item[$(\mathbf{O}_\neg)$] At $\mathbf{O}, w: \neg \phi$, \Ic choose $v \geq w$ and the game continues with $\mathbf{P}, v: \phi$.
+
+\vspace{2mm}
+
+\item[$(\mathbf{P}_{\iimp})$] At $\mathbf{P}, w: \phi_1 \iimp \phi_2$, \You choose $v \geq w$, \Ic choose between $\mathbf{O}, v:\phi_1$ and $\mathbf{P}, v:\phi_2$ to continue the game.
+
+\item[$(\mathbf{O}_{\iimp})$] At $\mathbf{O}, w: \phi_1 \iimp \phi_2$, \Ic choose $v \geq w$, \You choose between $\mathbf{P}, v:\phi_1$ and $\mathbf{O}, v:\phi_2$ to continue the game.
+
+\vspace{2mm}
+
+\item[$(\mathbf{P}_{\cimp})$] At $\mathbf{P}, w: \phi_1 \cimp \phi_2$, \You choose $v \geq w$, \Ic choose between $\mathbf{O}, v:\phi_1$ and ($u \geq v$ and $\mathbf{P}, v:\phi_2$) to continue the game.
+
+\item[$(\mathbf{O}_{\cimp})$] At $\mathbf{O}, w: \phi_1 \cimp \phi_2$, \Ic choose $v \geq w$, \You choose between $\mathbf{P}, v:\phi_1$ and ($u \geq v$ and $\mathbf{O}, u:\phi_2$) to continue the game.
+
+\vspace{2mm}
+
+% \item[$(\mathbf{P}_{})$] At $\mathbf{P}, \ag: \Diamond^\pm \phi$, \You win if there are no $\R^\pm$-successors of $\ag$. Otherwise, \Ic choose an $\R^\pm$-successor $\b$ and the game continues with $\mathbf{P},\b:\phi$.
+
+% \item[$(\mathbf{O}_{})$] At $\mathbf{O},\ag: \Diamond^\pm \phi$, \Ic win if there are no $\R^\pm$-successors of $\ag$. Otherwise, \You choose an $\R^\pm$-successor $\b$ and the game continues with $\mathbf{O},\b:\phi$.
+
+% \vspace{2mm}
+
+% \item[$(\mathbf{P}_{[A]})$] At $\mathbf{P},\ag :  [A]\phi$, \You choose an agent $\b$ and the game continues with $\mathbf{P},\b:\phi$.
+
+% \item[$(\mathbf{O}_{[A]})$] At $\mathbf{O},\ag :  [A]\phi$, \Ic choose an agent $\b$ and the game continues with $\mathbf{O},\b:\phi$.
+
+% \vspace{2mm}
+
+\item[$(\mathbf{P}_{el})$] Let $\phi_{e}$ be an elementary formula. \Ic win and \You lose at $\mathbf{P}, w:\phi_{e}$ iff $~\mathbb{M}, w \models \phi_{e}$. Otherwise, \You win and \Ic lose.
+
+\item[$(\mathbf{O}_{el})$] At $\mathbf{O}, w: \phi_{e}$, \Ic win and \You lose iff $\mathbb{M}, w \not \models \phi_{e}$. Otherwise, \You win and \Ic lose.
+\end{description}
+    \hrulefill
+\end{minipage}
+\caption{Semantic game proposed by Katya}
+\end{figure}
